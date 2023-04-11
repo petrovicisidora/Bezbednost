@@ -35,30 +35,14 @@ public class KeyStoreWriter {
                 //Ako je cilj kreirati novi KeyStore poziva se i dalje load, pri cemu je prvi parametar null
                 keyStore.load(null, password);
             }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
     }
 
     public void saveKeyStore(String fileName, char[] password) {
         try {
             keyStore.store(new FileOutputStream(fileName), password);
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
     }
 
@@ -66,7 +50,6 @@ public class KeyStoreWriter {
         try {
             keyStore.setKeyEntry(alias, privateKey, password, new Certificate[] {certificate});
         } catch (KeyStoreException e) {
-            e.printStackTrace();
         }
     }
 }
